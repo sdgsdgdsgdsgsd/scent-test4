@@ -1,95 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap');
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Gamja Flower', sans-serif;
+  font-family: 'Gowun Batang', serif;
   background-image: url('1.png');
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  color: #1f1f1f;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+.hidden {
+  display: none;
 }
 
 .screen {
-  display: none;
-  width: 90%;
-  max-width: 700px;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  padding: 20px;
 }
 
-.screen.visible {
-  display: block;
+.blur-box {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-h1, h2 {
-  font-size: 2em;
+h1 {
+  font-size: 2.5rem;
   margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 20px 0 10px;
 }
 
 p {
-  margin: 10px 0;
-  font-size: 1.2em;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 8px 0;
 }
 
-.button, .choice-button {
-  display: inline-block;
-  padding: 12px 24px;
-  margin: 10px 5px;
-  background-color: #2e4736;
+button, a.button-link {
+  background-color: #345043;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  font-size: 1em;
+  padding: 12px 22px;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.button:hover, .choice-button:hover {
-  background-color: #3a6149;
+button:hover, a.button-link:hover {
+  background-color: #466955;
+  transform: scale(1.03);
 }
 
-.choices {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.choice-button {
+  background-color: rgba(52, 80, 67, 0.9);
+  color: #fff;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  max-width: 300px;
+  transition: all 0.3s ease;
+}
+
+.choice-button:hover {
+  background-color: rgba(70, 105, 85, 0.9);
+  transform: scale(1.05);
+}
+
+#progress {
+  font-size: 1rem;
+  color: #333;
   margin-top: 20px;
 }
 
-.music-guide {
-  font-size: 0.9em;
-  margin-top: 10px;
+.result-box {
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.progress-text {
+.result-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.share-icons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.share-icons img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+/* 최상단 blur 박스 문제 대응 */
+#start-screen .blur-box {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* 진행 표시 위치 개선 */
+#question-screen #progress {
   margin-top: 20px;
   font-weight: bold;
 }
 
-.btn-row {
+/* 음악 안내 텍스트 */
+.music-notice {
+  font-size: 0.95rem;
+  margin-top: 15px;
+  color: #333;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  align-items: center;
+  gap: 5px;
+  opacity: 0.8;
 }
 
-.share {
-  margin-top: 20px;
-}
+/* 모바일 가독성 대응 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+  }
 
-.share img {
-  width: 28px;
-  margin: 0 10px;
-  vertical-align: middle;
-}
+  h2 {
+    font-size: 1.4rem;
+  }
 
-strong {
-  color: #1c1c1c;
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .blur-box, .result-box {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.88);
+    width: 95%;
+  }
+
+  .choice-button {
+    font-size: 1rem;
+    padding: 12px 14px;
+  }
+
+  .result-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .share-icons img {
+    width: 32px;
+    height: 32px;
+  }
 }
