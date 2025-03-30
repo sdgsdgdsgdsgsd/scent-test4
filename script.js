@@ -1,133 +1,134 @@
-const startBtn = document.getElementById("start-btn");
-const startScreen = document.getElementById("start-screen");
-const questionScreen = document.getElementById("question-screen");
-const resultScreen = document.getElementById("result-screen");
-const questionText = document.getElementById("question-text");
-const choicesContainer = document.getElementById("choices");
-const progress = document.getElementById("progress");
-const resultTitle = document.getElementById("result-title");
-const resultDesc = document.getElementById("result-description");
-const resultQuote = document.getElementById("result-quote");
-const scentButton = document.getElementById("scent-button");
-const copyButton = document.getElementById("copy-url-button");
-const music = new Audio("Eternal Garden - Dan Henig.mp3");
+const startBtn = document.getElementById('start-btn');
+const startScreen = document.getElementById('start-screen');
+const questionScreen = document.getElementById('question-screen');
+const resultScreen = document.getElementById('result-screen');
+const questionText = document.getElementById('question-text');
+const choicesContainer = document.getElementById('choices');
+const progress = document.getElementById('progress');
+const scentButton = document.getElementById('scent-button');
+const resultTitle = document.getElementById('result-title');
+const resultQuote = document.getElementById('result-quote');
+const resultDescription = document.getElementById('result-description');
+const copyUrlButton = document.getElementById('copy-url-button');
 
-let currentQuestion = 0;
-let answers = {
+const bgMusic = document.getElementById('bg-music');
+bgMusic.volume = 0.4;
+
+const scentScores = {
   sandalwood: 0,
   basil: 0,
   blacktea: 0,
 };
 
 const questions = [
-  { icon: "🌤️", text: "당신이 원하는 완벽한 휴일 아침 풍경은?", options: [
-    { text: "따뜻한 햇살 아래 산책", type: "sandalwood" },
-    { text: "맑은 숲속 명상", type: "basil" },
-    { text: "창가에서 책 읽기", type: "blacktea" }
-  ]},
-  { icon: "📚", text: "가장 편안한 휴식 방법은?", options: [
-    { text: "조용한 자연 속에서", type: "sandalwood" },
-    { text: "활기찬 음악과 함께", type: "basil" },
-    { text: "차 한 잔과 함께", type: "blacktea" }
-  ]},
-  { icon: "🍃", text: "좋아하는 공간의 분위기는?", options: [
-    { text: "우디하고 따뜻한", type: "sandalwood" },
-    { text: "맑고 생기있는", type: "basil" },
-    { text: "차분하고 지적인", type: "blacktea" }
-  ]},
-  { icon: "🎧", text: "어떤 음악이 힐링이 되나요?", options: [
-    { text: "잔잔한 피아노", type: "sandalwood" },
-    { text: "자연의 새소리", type: "basil" },
-    { text: "재즈와 클래식", type: "blacktea" }
-  ]},
-  { icon: "☕", text: "휴식 중 마시고 싶은 음료는?", options: [
-    { text: "따뜻한 허브티", type: "sandalwood" },
-    { text: "레몬워터", type: "basil" },
-    { text: "홍차 또는 아메리카노", type: "blacktea" }
-  ]},
-  { icon: "🌲", text: "좋아하는 자연 풍경은?", options: [
-    { text: "짙은 나무와 흙길", type: "sandalwood" },
-    { text: "초록빛 풀밭", type: "basil" },
-    { text: "이른 아침 안개 숲", type: "blacktea" }
-  ]},
-  { icon: "🕯️", text: "선호하는 향은?", options: [
-    { text: "샌달우드", type: "sandalwood" },
-    { text: "바질 앤 베티버", type: "basil" },
-    { text: "블랙티 앤 피그", type: "blacktea" }
-  ]},
-  { icon: "🛋️", text: "집에서 가장 편한 공간은?", options: [
-    { text: "따뜻한 거실 소파", type: "sandalwood" },
-    { text: "창문 앞 햇살 공간", type: "basil" },
-    { text: "서재나 책상", type: "blacktea" }
-  ]},
-  { icon: "📝", text: "당신을 가장 잘 표현하는 말은?", options: [
-    { text: "조용하고 따뜻한 사람", type: "sandalwood" },
-    { text: "생기있고 밝은 사람", type: "basil" },
-    { text: "지적이고 차분한 사람", type: "blacktea" }
-  ]},
-  { icon: "🪵", text: "가장 어울리는 분위기는?", options: [
-    { text: "따뜻한 우디 감성", type: "sandalwood" },
-    { text: "맑고 생기있는 초록빛", type: "basil" },
-    { text: "은은한 무게감", type: "blacktea" }
-  ]}
+  {
+    text: "당신이 원하는 완벽한 휴일 아침 풍경은?",
+    options: [
+      { text: "☀️ 따뜻한 햇살 아래 산책", scent: "sandalwood" },
+      { text: "🌲 맑은 숲속 명상", scent: "basil" },
+      { text: "📖 창가에서 책 읽기", scent: "blacktea" }
+    ]
+  },
+  {
+    text: "가장 끌리는 향의 계열은?",
+    options: [
+      { text: "🌿 우디", scent: "sandalwood" },
+      { text: "🌼 플로럴", scent: "basil" },
+      { text: "🍋 프루티", scent: "blacktea" }
+    ]
+  },
+  {
+    text: "휴일 오후, 당신의 선택은?",
+    options: [
+      { text: "🎨 취미 시간", scent: "sandalwood" },
+      { text: "🛋️ 소파 낮잠", scent: "basil" },
+      { text: "📚 독서", scent: "blacktea" }
+    ]
+  },
+  {
+    text: "친구들과의 휴식 스타일은?",
+    options: [
+      { text: "🏞️ 자연 속 소풍", scent: "sandalwood" },
+      { text: "☕ 감성 카페", scent: "basil" },
+      { text: "🎬 영화 보기", scent: "blacktea" }
+    ]
+  },
+  {
+    text: "편안함을 느끼는 장소는?",
+    options: [
+      { text: "🌊 바닷가", scent: "sandalwood" },
+      { text: "🌳 숲속", scent: "basil" },
+      { text: "🏠 내 방", scent: "blacktea" }
+    ]
+  },
+  {
+    text: "피로할 때 가장 위로가 되는 것은?",
+    options: [
+      { text: "🕯️ 향기", scent: "sandalwood" },
+      { text: "🍲 따뜻한 음식", scent: "basil" },
+      { text: "💬 진심 어린 대화", scent: "blacktea" }
+    ]
+  },
+  {
+    text: "이상적인 하루의 마무리는?",
+    options: [
+      { text: "🌌 밤 산책", scent: "sandalwood" },
+      { text: "🛁 반신욕", scent: "basil" },
+      { text: "🛏️ 일찍 자기", scent: "blacktea" }
+    ]
+  },
+  {
+    text: "좋아하는 색감은?",
+    options: [
+      { text: "🟤 브라운", scent: "sandalwood" },
+      { text: "🌿 그린", scent: "basil" },
+      { text: "🌫️ 베이지", scent: "blacktea" }
+    ]
+  },
+  {
+    text: "당신이 좋아하는 계절은?",
+    options: [
+      { text: "🍁 가을", scent: "sandalwood" },
+      { text: "🌸 봄", scent: "basil" },
+      { text: "❄️ 겨울", scent: "blacktea" }
+    ]
+  },
+  {
+    text: "가장 듣고 싶은 말은?",
+    options: [
+      { text: "🌟 넌 참 따뜻한 사람이야", scent: "sandalwood" },
+      { text: "🎈 넌 평온한 에너지를 줘", scent: "basil" },
+      { text: "🔥 넌 정말 매력 있어", scent: "blacktea" }
+    ]
+  }
 ];
 
-const results = {
-  sandalwood: {
-    title: "샌달우드",
-    desc: "당신은 고요하고 따뜻한 휴식을 선호하는 사람입니다.",
-    quote: "자연 속에 머물 듯한 고요함, 나무 향이 마음을 감싸줍니다.",
-    link: "https://yourbrand.com/sandalwood"
-  },
-  basil: {
-    title: "바질앤베티버",
-    desc: "당신은 상쾌하고 활력 있는 휴식을 추구하는 사람입니다.",
-    quote: "허브의 생기와 그린한 노트가 당신의 에너지를 밝혀줍니다.",
-    link: "https://yourbrand.com/basil"
-  },
-  blacktea: {
-    title: "블랙티앤피그",
-    desc: "당신은 차분하고 지적인 분위기를 사랑하는 사람입니다.",
-    quote: "깊고 고요한 공간에서 향으로 집중을 더해줍니다.",
-    link: "https://yourbrand.com/blacktea"
-  }
-};
+let currentQuestion = 0;
 
-function startTest() {
-  music.loop = true;
-  music.volume = 0.5;
-  music.play().catch(() => {
-    console.log("User interaction needed to autoplay");
-  });
-
+startBtn.addEventListener('click', () => {
+  startScreen.classList.add('hidden');
+  questionScreen.classList.remove('hidden');
   document.body.style.backgroundImage = "url('2.png')";
-  startScreen.classList.add("hidden");
-  questionScreen.classList.remove("hidden");
   showQuestion();
-}
+});
 
 function showQuestion() {
   const q = questions[currentQuestion];
-  questionText.innerHTML = `
-    <div id="question-icon">${q.icon}</div>
-    <div class="question-anim">${q.text}</div>
-  `;
+  questionText.textContent = q.text;
+  choicesContainer.innerHTML = '';
   progress.textContent = `${currentQuestion + 1} / ${questions.length}`;
-  choicesContainer.innerHTML = "";
 
-  q.options.forEach((opt) => {
-    const btn = document.createElement("button");
-    btn.textContent = opt.text;
-    btn.classList.add("choice-button");
-    btn.onclick = () => {
-      answers[opt.type]++;
-      nextQuestion();
-    };
+  q.options.forEach(option => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-button';
+    btn.textContent = option.text;
+    btn.addEventListener('click', () => handleAnswer(option.scent));
     choicesContainer.appendChild(btn);
   });
 }
 
-function nextQuestion() {
+function handleAnswer(scent) {
+  scentScores[scent]++;
   currentQuestion++;
   if (currentQuestion < questions.length) {
     showQuestion();
@@ -137,21 +138,40 @@ function nextQuestion() {
 }
 
 function showResult() {
+  questionScreen.classList.add('hidden');
+  resultScreen.classList.remove('hidden');
   document.body.style.backgroundImage = "url('3.png')";
-  questionScreen.classList.add("hidden");
-  resultScreen.classList.remove("hidden");
 
-  let final = Object.keys(answers).reduce((a, b) => answers[a] > answers[b] ? a : b);
-  const res = results[final];
+  const result = Object.entries(scentScores).sort((a, b) => b[1] - a[1])[0][0];
 
-  resultTitle.textContent = res.title;
-  resultDesc.textContent = res.desc;
-  resultQuote.textContent = `"${res.quote}"`;
-  scentButton.href = res.link;
+  if (result === 'sandalwood') {
+    resultTitle.textContent = '샌달우드';
+    resultQuote.textContent = '"당신은 따뜻하고 깊이 있는 휴식을 사랑하는 사람입니다."';
+    resultDescription.innerHTML =
+      '우디한 베이스에 잔잔한 무드를 더한 향을 좋아하는 당신.<br>' +
+      '당신은 주변 사람들에게 포근하고 안정감을 주는 사람이에요.<br>' +
+      '오늘도 따뜻한 향과 함께 스스로를 감싸주세요.';
+    scentButton.href = 'https://longtake.co.kr/sandalwood';
+  } else if (result === 'basil') {
+    resultTitle.textContent = '바질앤베티버';
+    resultQuote.textContent = '"당신은 상쾌하고 활력 있는 휴식을 추구하는 사람입니다."';
+    resultDescription.innerHTML =
+      '허브의 생기와 그린한 노트의 향기를 좋아하는 당신.<br>' +
+      '당신은 사람들에게 밝고 생기 있는 에너지를 주는 사람이에요.<br>' +
+      '지금, 그린한 숨결로 일상에 리프레시를!';
+    scentButton.href = 'https://longtake.co.kr/basil';
+  } else {
+    resultTitle.textContent = '블랙티앤피그';
+    resultQuote.textContent = '"당신은 차분하고 지적인 분위기를 사랑하는 사람입니다."';
+    resultDescription.innerHTML =
+      '부드럽고 고급스러운 블렌딩 향을 선호하는 당신.<br>' +
+      '묵직하면서도 우아한 매력을 지닌 당신에게 어울려요.<br>' +
+      '고요한 저녁, 블랙티처럼 깊이 있는 순간을 선물하세요.';
+    scentButton.href = 'https://longtake.co.kr/blacktea';
+  }
 }
 
-startBtn.addEventListener("click", startTest);
-copyButton.addEventListener("click", () => {
+copyUrlButton.addEventListener('click', () => {
   navigator.clipboard.writeText(window.location.href);
-  alert("링크가 복사되었습니다!");
+  alert('🔗 링크가 복사되었어요!');
 });
