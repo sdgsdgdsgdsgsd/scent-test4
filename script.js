@@ -9,15 +9,17 @@ const scentButton = document.getElementById('scent-button');
 const resultTitle = document.getElementById('result-title');
 const resultQuote = document.getElementById('result-quote');
 const resultDescription = document.getElementById('result-description');
-const resultMusic = document.getElementById('result-music');
-const resultPlace = document.getElementById('result-place');
 const copyUrlButton = document.getElementById('copy-url-button');
-const retryBtn = document.getElementById('retry-btn');
-const bgMusic = document.getElementById('bg-music');
+const retryButton = document.getElementById('retry-btn');
 
+const bgMusic = document.getElementById('bg-music');
 bgMusic.volume = 0.4;
 
-const scentScores = { sandalwood: 0, basil: 0, blacktea: 0 };
+const scentScores = {
+  sandalwood: 0,
+  basil: 0,
+  blacktea: 0,
+};
 
 const questions = [
   {
@@ -108,10 +110,11 @@ startBtn.addEventListener('click', () => {
   startScreen.classList.add('hidden');
   questionScreen.classList.remove('hidden');
   document.body.style.backgroundImage = "url('2.png')";
+  bgMusic.play();
   showQuestion();
 });
 
-retryBtn.addEventListener('click', () => {
+retryButton.addEventListener('click', () => {
   location.reload();
 });
 
@@ -153,27 +156,30 @@ function showResult() {
     resultDescription.innerHTML =
       '우디한 베이스에 잔잔한 무드를 더한 향을 좋아하는 당신.<br>' +
       '당신은 주변 사람들에게 포근하고 안정감을 주는 사람이에요.<br>' +
-      '오늘도 따뜻한 향과 함께 스스로를 감싸주세요.';
-    resultMusic.innerHTML = '🎵 <strong>휴식과 어울리는 음악:</strong> 잔잔한 피아노 선율, 카페 음악';
-    resultPlace.innerHTML = '📘 <strong>어울리는 여행지:</strong> 남해 바다, 숲속 글램핑, 교토 전통 거리';
+      '오늘도 따뜻한 향과 함께 스스로를 감싸주세요.<br><br>' +
+      '🎵 <b>휴식과 어울리는 음악:</b> 잔잔한 피아노 선율, 카페 음악<br>' +
+      '🗺️ <b>어울리는 여행지:</b> 남해 바다, 숲속 글램핑, 교토 전통 거리';
+    scentButton.href = 'https://brand.naver.com/longtake/products/11424974357';
   } else if (result === 'basil') {
     resultTitle.textContent = '바질앤베티버';
     resultQuote.textContent = '"당신은 상쾌하고 활력 있는 휴식을 추구하는 사람입니다."';
     resultDescription.innerHTML =
       '허브의 생기와 그린한 노트의 향기를 좋아하는 당신.<br>' +
       '당신은 사람들에게 밝고 생기 있는 에너지를 주는 사람이에요.<br>' +
-      '지금, 그린한 숨결로 일상에 리프레시를!';
-    resultMusic.innerHTML = '🎵 <strong>휴식과 어울리는 음악:</strong> 자연의 소리, 시원한 재즈';
-    resultPlace.innerHTML = '📘 <strong>어울리는 여행지:</strong> 제주 숲길, 북유럽 산책길, 스위스 호수';
+      '지금, 그린한 숨결로 일상에 리프레시를!<br><br>' +
+      '🎵 <b>휴식과 어울리는 음악:</b> 자연 소리, 힐링 사운드<br>' +
+      '🗺️ <b>어울리는 여행지:</b> 제주 숲길, 북유럽 피오르, 스위스 마을';
+    scentButton.href = 'https://brand.naver.com/longtake/products/11424974357';
   } else {
     resultTitle.textContent = '블랙티앤피그';
     resultQuote.textContent = '"당신은 차분하고 지적인 분위기를 사랑하는 사람입니다."';
     resultDescription.innerHTML =
       '부드럽고 고급스러운 블렌딩 향을 선호하는 당신.<br>' +
       '묵직하면서도 우아한 매력을 지닌 당신에게 어울려요.<br>' +
-      '고요한 저녁, 블랙티처럼 깊이 있는 순간을 선물하세요.';
-    resultMusic.innerHTML = '🎵 <strong>휴식과 어울리는 음악:</strong> 재즈, 클래식, 로우파이 음악';
-    resultPlace.innerHTML = '📘 <strong>어울리는 여행지:</strong> 교토 골목, 파리 북카페, 런던 비 오는 거리';
+      '고요한 저녁, 블랙티처럼 깊이 있는 순간을 선물하세요.<br><br>' +
+      '🎵 <b>휴식과 어울리는 음악:</b> 클래식 재즈, 저녁 시간의 BGM<br>' +
+      '🗺️ <b>어울리는 여행지:</b> 교토, 파리 카페 거리, 도쿄 골목';
+    scentButton.href = 'https://brand.naver.com/longtake/products/11424974357';
   }
 }
 
