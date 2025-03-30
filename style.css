@@ -5,6 +5,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   transition: background-image 0.5s ease-in-out;
+  min-height: 100vh;
 }
 
 button {
@@ -16,11 +17,12 @@ button {
   background-color: #3e5546;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
   background-color: #2f4134;
+  transform: scale(1.05);
 }
 
 .hidden {
@@ -70,6 +72,7 @@ button:hover {
   padding: 8px 16px;
   border-radius: 6px;
   font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
 #social-share button:hover {
@@ -79,4 +82,11 @@ button:hover {
 #question-icon {
   font-size: 2rem;
   margin-bottom: 8px;
+}
+
+#choices button {
+  display: block;
+  width: 80%;
+  max-width: 300px;
+  margin: 10px auto;
 }
