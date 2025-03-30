@@ -5,46 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>나의 휴식 취향은?</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
   <audio id="bg-music" autoplay loop>
-    <source src="Eternal Garden - Dan Henig.mp3" type="audio/mpeg">
+    <source src="Eternal Garden - Dan Henig.mp3" type="audio/mpeg" />
   </audio>
 
   <div id="start-screen" class="screen visible">
-    <div class="content-box">
+    <div class="content">
       <h1>나의 휴식 취향은?</h1>
       <p>당신에게 어울리는 향은 어떤 걸까요?</p>
       <button id="start-btn">시작하기</button>
-      <p>현재까지 7,854명이 참여했어요</p>
+      <p>현재까지 <strong>7,854명</strong>이 참여했어요</p>
       <p class="music-guide">🎵 테스트 중 음악이 재생됩니다. 소리를 켜주세요!</p>
     </div>
   </div>
 
   <div id="question-screen" class="screen hidden">
-    <div class="content-box">
-      <p id="question-text"></p>
+    <div class="content">
+      <p id="question-text" class="question-text">질문이 여기에 들어갑니다</p>
       <div id="choices" class="choices"></div>
-      <p id="progress" class="progress"></p>
+      <div id="progress" class="progress-text">1 / 10</div>
     </div>
   </div>
 
   <div id="result-screen" class="screen hidden">
-    <div class="content-box">
-      <p id="result-quote" class="quote"></p>
-      <h2 id="result-title"></h2>
-      <p id="result-description" class="description"></p>
-      <p id="result-music" class="addon"></p>
-      <p id="result-place" class="addon"></p>
-      <div class="button-group">
-        <a id="scent-button" class="result-button" href="https://brand.naver.com/longtake/products/11424974357" target="_blank">🌿 당신만을 위한 향 구경해보세요</a>
-        <button id="copy-url-button" class="result-button">🔗 테스트 URL 복사</button>
-        <button id="retry-btn" class="result-button">🔁 다시하기</button>
+    <div class="content">
+      <h2 id="result-quote">"결과 문장"</h2>
+      <h1 id="result-title">결과 제목</h1>
+      <p id="result-description">설명</p>
+      <p><strong>🎵 휴식과 어울리는 음악:</strong> <span id="result-music"></span></p>
+      <p><strong>🧭 어울리는 여행지:</strong> <span id="result-travel"></span></p>
+      <div class="btn-row">
+        <a id="scent-button" href="#" target="_blank" class="button">🌿 당신만을 위한 향 구경해보세요</a>
+        <button id="copy-url-button" class="button">🔗 테스트 URL 복사</button>
+        <button onclick="location.reload()" class="button">🔄 다시하기</button>
       </div>
-      <p class="share-label">공유하기:</p>
-      <div class="share-icons">
-        <img src="kakao.png" alt="카카오 공유" width="32" />
-        <img src="instagram.png" alt="인스타그램 공유" width="32" />
+      <div class="share">
+        <p>공유하기:</p>
+        <a href="#" title="카카오톡 공유"><img src="https://img.icons8.com/color/48/kakaotalk.png" alt="카카오 공유" width="28"/></a>
+        <a href="#" title="인스타그램 공유"><img src="https://img.icons8.com/fluency/48/instagram-new.png" alt="인스타그램 공유" width="28"/></a>
       </div>
     </div>
   </div>
