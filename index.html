@@ -2,37 +2,42 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>나의 휴식 취향은?</title>
-  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body style="background-image: url('1.png');">
+
   <audio id="bg-music" src="Eternal Garden - Dan Henig.mp3" loop autoplay></audio>
 
   <div id="start-screen" class="screen">
     <h1>나의 휴식 취향은?</h1>
     <p>당신에게 어울리는 향은 어떤 걸까요?</p>
     <button id="start-btn">시작하기</button>
-    <p>현재까지 7,854명이 참여했어요</p>
-    <p class="note">🌿 테스트 중 은은한 재생됩니다. 소리를 높여주세요 🌿</p>
+    <p class="note">현재까지 7,854명이 참여했어요</p>
+    <p class="note">🌿 테스트 중 은은한 배경 음악이 재생됩니다. 소리를 켜주세요!</p>
   </div>
 
   <div id="question-screen" class="screen hidden">
-    <p id="question-text"></p>
+    <h2 id="question-text">질문 텍스트</h2>
     <div id="choices"></div>
-    <p id="progress"></p>
+    <p id="progress">1 / 10</p>
   </div>
 
   <div id="result-screen" class="screen hidden">
-    <p id="result-quote"></p>
-    <h2 id="result-title"></h2>
-    <p id="result-description"></p>
-    <p id="result-extra"></p>
-    <a id="scent-button" class="button primary" href="#" target="_blank">🌿 당신만을 위한 향 구경해보세요</a>
-    <button id="copy-url-button" class="button secondary">🔗 테스트 URL 복사</button>
+    <h2 id="result-quote">결과 문장</h2>
+    <h1 id="result-title">향 이름</h1>
+    <p id="result-description">설명 문장</p>
+    <p id="extra-info"></p>
+    <a id="scent-button" class="button" href="#" target="_blank">🌿 당신만을 위한 향 구경해보세요</a>
+    <button id="copy-url-button">🔗 테스트 URL 복사</button>
     <div class="share">
-      <span>📎 카카오 공유</span> | <span>📸 인스타그램 공유</span>
+      <p>
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111457.png" class="icon" />
+        카카오 공유 &nbsp;&nbsp;
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111421.png" class="icon" />
+        인스타그램 공유
+      </p>
     </div>
   </div>
 
