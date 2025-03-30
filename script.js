@@ -10,9 +10,9 @@ const resultTitle = document.getElementById('result-title');
 const resultQuote = document.getElementById('result-quote');
 const resultDescription = document.getElementById('result-description');
 const copyUrlButton = document.getElementById('copy-url-button');
-
 const bgMusic = document.getElementById('bg-music');
 bgMusic.volume = 0.4;
+bgMusic.play().catch(e => console.log("Autoplay failed: ", e));
 
 const scentScores = {
   sandalwood: 0,
@@ -175,3 +175,4 @@ copyUrlButton.addEventListener('click', () => {
   navigator.clipboard.writeText(window.location.href);
   alert('🔗 링크가 복사되었어요!');
 });
+
