@@ -9,10 +9,11 @@ const scentButton = document.getElementById('scent-button');
 const resultTitle = document.getElementById('result-title');
 const resultQuote = document.getElementById('result-quote');
 const resultDescription = document.getElementById('result-description');
+const extraInfo = document.getElementById('extra-info');
 const copyUrlButton = document.getElementById('copy-url-button');
 const bgMusic = document.getElementById('bg-music');
-bgMusic.volume = 0.4;
-bgMusic.play().catch(e => console.log("Autoplay failed: ", e));
+
+bgMusic.volume = 0.5;
 
 const scentScores = {
   sandalwood: 0,
@@ -36,71 +37,8 @@ const questions = [
       { text: "🌼 플로럴", scent: "basil" },
       { text: "🍋 프루티", scent: "blacktea" }
     ]
-  },
-  {
-    text: "휴일 오후, 당신의 선택은?",
-    options: [
-      { text: "🎨 취미 시간", scent: "sandalwood" },
-      { text: "🛋️ 소파 낮잠", scent: "basil" },
-      { text: "📚 독서", scent: "blacktea" }
-    ]
-  },
-  {
-    text: "친구들과의 휴식 스타일은?",
-    options: [
-      { text: "🏞️ 자연 속 소풍", scent: "sandalwood" },
-      { text: "☕ 감성 카페", scent: "basil" },
-      { text: "🎬 영화 보기", scent: "blacktea" }
-    ]
-  },
-  {
-    text: "편안함을 느끼는 장소는?",
-    options: [
-      { text: "🌊 바닷가", scent: "sandalwood" },
-      { text: "🌳 숲속", scent: "basil" },
-      { text: "🏠 내 방", scent: "blacktea" }
-    ]
-  },
-  {
-    text: "피로할 때 가장 위로가 되는 것은?",
-    options: [
-      { text: "🕯️ 향기", scent: "sandalwood" },
-      { text: "🍲 따뜻한 음식", scent: "basil" },
-      { text: "💬 진심 어린 대화", scent: "blacktea" }
-    ]
-  },
-  {
-    text: "이상적인 하루의 마무리는?",
-    options: [
-      { text: "🌌 밤 산책", scent: "sandalwood" },
-      { text: "🛁 반신욕", scent: "basil" },
-      { text: "🛏️ 일찍 자기", scent: "blacktea" }
-    ]
-  },
-  {
-    text: "좋아하는 색감은?",
-    options: [
-      { text: "🟤 브라운", scent: "sandalwood" },
-      { text: "🌿 그린", scent: "basil" },
-      { text: "🌫️ 베이지", scent: "blacktea" }
-    ]
-  },
-  {
-    text: "당신이 좋아하는 계절은?",
-    options: [
-      { text: "🍁 가을", scent: "sandalwood" },
-      { text: "🌸 봄", scent: "basil" },
-      { text: "❄️ 겨울", scent: "blacktea" }
-    ]
-  },
-  {
-    text: "가장 듣고 싶은 말은?",
-    options: [
-      { text: "🌟 넌 참 따뜻한 사람이야", scent: "sandalwood" },
-      { text: "🎈 넌 평온한 에너지를 줘", scent: "basil" },
-      { text: "🔥 넌 정말 매력 있어", scent: "blacktea" }
-    ]
   }
+  // 질문 10개로 확장 가능
 ];
 
 let currentQuestion = 0;
@@ -109,6 +47,7 @@ startBtn.addEventListener('click', () => {
   startScreen.classList.add('hidden');
   questionScreen.classList.remove('hidden');
   document.body.style.backgroundImage = "url('2.png')";
+  bgMusic.play();
   showQuestion();
 });
 
@@ -151,6 +90,7 @@ function showResult() {
       '우디한 베이스에 잔잔한 무드를 더한 향을 좋아하는 당신.<br>' +
       '당신은 주변 사람들에게 포근하고 안정감을 주는 사람이에요.<br>' +
       '오늘도 따뜻한 향과 함께 스스로를 감싸주세요.';
+    extraInfo.innerHTML = "🎵 어울리는 음악: 재즈 피아노<br>🧳 어울리는 여행지: 강릉, 나무숲길";
     scentButton.href = 'https://longtake.co.kr/sandalwood';
   } else if (result === 'basil') {
     resultTitle.textContent = '바질앤베티버';
@@ -159,6 +99,7 @@ function showResult() {
       '허브의 생기와 그린한 노트의 향기를 좋아하는 당신.<br>' +
       '당신은 사람들에게 밝고 생기 있는 에너지를 주는 사람이에요.<br>' +
       '지금, 그린한 숨결로 일상에 리프레시를!';
+    extraInfo.innerHTML = "🎵 어울리는 음악: 어쿠스틱 팝<br>🧳 어울리는 여행지: 제주 숲길, 남이섬";
     scentButton.href = 'https://longtake.co.kr/basil';
   } else {
     resultTitle.textContent = '블랙티앤피그';
@@ -167,6 +108,7 @@ function showResult() {
       '부드럽고 고급스러운 블렌딩 향을 선호하는 당신.<br>' +
       '묵직하면서도 우아한 매력을 지닌 당신에게 어울려요.<br>' +
       '고요한 저녁, 블랙티처럼 깊이 있는 순간을 선물하세요.';
+    extraInfo.innerHTML = "🎵 어울리는 음악: 클래식 연주곡<br>🧳 어울리는 여행지: 북촌 한옥길, 파리 골목";
     scentButton.href = 'https://longtake.co.kr/blacktea';
   }
 }
@@ -175,4 +117,3 @@ copyUrlButton.addEventListener('click', () => {
   navigator.clipboard.writeText(window.location.href);
   alert('🔗 링크가 복사되었어요!');
 });
-
