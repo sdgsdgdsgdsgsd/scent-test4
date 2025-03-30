@@ -6,6 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionText = document.getElementById("question-text");
   const choicesContainer = document.getElementById("choices");
 
+  // 음악 자동 재생
+  const audio = new Audio("Eternal Garden - Dan Henig.mp3");
+  audio.loop = true;
+  audio.volume = 0.5;
+  audio.play().catch(() => {
+    // 사용자 상호작용 후 재생하도록 대기
+    startBtn.addEventListener("click", () => {
+      audio.play();
+    });
+  });
+
   const questions = [
     {
       text: "당신이 원하는 완벽한 휴일 아침 풍경은?",
@@ -93,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     startScreen.classList.remove("active");
     questionScreen.classList.remove("hidden");
     questionScreen.classList.add("active");
-    document.body.style.backgroundImage = "url('assets/images/2.png')";
+    document.body.style.backgroundImage = "url('2.png')";
     showQuestion();
   });
 
@@ -127,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     questionScreen.classList.add("hidden");
     resultScreen.classList.remove("hidden");
     resultScreen.classList.add("active");
-    document.body.style.backgroundImage = "url('assets/images/3.png')";
+    document.body.style.backgroundImage = "url('3.png')";
 
     document.getElementById("result-title").textContent = data.title;
     document.getElementById("result-desc-1").textContent = data.desc1;
