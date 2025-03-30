@@ -1,73 +1,95 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Nanum Myeongjo', serif;
+  font-family: 'Gamja Flower', sans-serif;
   background-image: url('1.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 100vh;
+  color: #1f1f1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.hidden {
+.screen {
   display: none;
-}
-
-.container {
-  background-color: rgba(255, 255, 255, 0.4);
-  padding: 40px;
+  width: 90%;
+  max-width: 700px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 20px;
-  max-width: 600px;
-  margin: 100px auto;
   text-align: center;
-  color: #1f3b2c;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
 }
 
-h1 {
-  font-size: 2.5em;
+.screen.visible {
+  display: block;
+}
+
+h1, h2 {
+  font-size: 2em;
   margin-bottom: 10px;
 }
 
-button {
-  background-color: #2e4739;
-  color: white;
+p {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.button, .choice-button {
+  display: inline-block;
+  padding: 12px 24px;
+  margin: 10px 5px;
+  background-color: #2e4736;
+  color: #fff;
   border: none;
-  padding: 15px 25px;
-  margin: 10px;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #3b5b49;
-  transform: scale(1.03);
+.button:hover, .choice-button:hover {
+  background-color: #3a6149;
 }
 
-.choice-button {
-  display: block;
-  width: 80%;
-  margin: 10px auto;
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-#progress {
-  margin-top: 15px;
-  font-size: 1.1em;
+.music-guide {
+  font-size: 0.9em;
+  margin-top: 10px;
 }
 
-a {
-  text-decoration: none;
-  color: white;
+.progress-text {
+  margin-top: 20px;
+  font-weight: bold;
 }
 
-.share-icons img {
-  width: 24px;
-  height: 24px;
-  margin-right: 5px;
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.share {
+  margin-top: 20px;
+}
+
+.share img {
+  width: 28px;
+  margin: 0 10px;
   vertical-align: middle;
 }
 
-#music-note {
-  font-size: 1em;
-  margin-top: 10px;
+strong {
+  color: #1c1c1c;
 }
