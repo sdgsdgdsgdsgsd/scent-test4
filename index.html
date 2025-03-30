@@ -2,52 +2,55 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>나의 휴식 취향은?</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <audio id="bg-music" autoplay loop>
-    <source src="Eternal Garden - Dan Henig.mp3" type="audio/mpeg" />
-  </audio>
 
+  <!-- 🎵 배경 음악 -->
+  <audio id="bg-music" src="Eternal Garden - Dan Henig.mp3" autoplay loop></audio>
+
+  <!-- ✅ 시작 화면 -->
   <div id="start-screen" class="screen visible">
-    <div class="content">
-      <h1>나의 휴식 취향은?</h1>
-      <p>당신에게 어울리는 향은 어떤 걸까요?</p>
-      <button id="start-btn">시작하기</button>
-      <p>현재까지 <strong>7,854명</strong>이 참여했어요</p>
-      <p class="music-guide">🎵 테스트 중 음악이 재생됩니다. 소리를 켜주세요!</p>
-    </div>
+    <h1>나의 휴식 취향은?</h1>
+    <p>당신에게 어울리는 향은 어떤 걸까요?</p>
+    <button id="start-btn" class="button">시작하기</button>
+    <p>현재까지 <strong>7,854명</strong>이 참여했어요</p>
+    <p class="music-guide">🎵 테스트 중 음악이 재생됩니다. 소리를 켜주세요!</p>
   </div>
 
+  <!-- ✅ 질문 화면 -->
   <div id="question-screen" class="screen hidden">
-    <div class="content">
-      <p id="question-text" class="question-text">질문이 여기에 들어갑니다</p>
-      <div id="choices" class="choices"></div>
-      <div id="progress" class="progress-text">1 / 10</div>
-    </div>
+    <h2 id="question-text">질문이 표시됩니다</h2>
+    <div id="choices" class="choices"></div>
+    <div id="progress" class="progress-text">1 / 10</div>
   </div>
 
+  <!-- ✅ 결과 화면 -->
   <div id="result-screen" class="screen hidden">
-    <div class="content">
-      <h2 id="result-quote">"결과 문장"</h2>
-      <h1 id="result-title">결과 제목</h1>
-      <p id="result-description">설명</p>
-      <p><strong>🎵 휴식과 어울리는 음악:</strong> <span id="result-music"></span></p>
-      <p><strong>🧭 어울리는 여행지:</strong> <span id="result-travel"></span></p>
-      <div class="btn-row">
-        <a id="scent-button" href="#" target="_blank" class="button">🌿 당신만을 위한 향 구경해보세요</a>
-        <button id="copy-url-button" class="button">🔗 테스트 URL 복사</button>
-        <button onclick="location.reload()" class="button">🔄 다시하기</button>
-      </div>
-      <div class="share">
-        <p>공유하기:</p>
-        <a href="#" title="카카오톡 공유"><img src="https://img.icons8.com/color/48/kakaotalk.png" alt="카카오 공유" width="28"/></a>
-        <a href="#" title="인스타그램 공유"><img src="https://img.icons8.com/fluency/48/instagram-new.png" alt="인스타그램 공유" width="28"/></a>
-      </div>
+    <p id="result-quote">"당신은 따뜻하고 깊이 있는 휴식을 사랑하는 사람입니다."</p>
+    <h2 id="result-title">샌달우드</h2>
+    <p id="result-description">
+      우디한 베이스에 잔잔한 무드를 더한 향을 좋아하는 당신.<br>
+      당신은 주변 사람들에게 포근하고 안정감을 주는 사람이에요.<br>
+      오늘도 따뜻한 향과 함께 스스로를 감싸주세요.
+    </p>
+
+    <p>🎵 <strong>휴식과 어울리는 음악:</strong> <span id="result-music">잔잔한 피아노 선율, 카페 음악</span></p>
+    <p>🗺️ <strong>어울리는 여행지:</strong> <span id="result-travel">남해 바다, 숲속 글램핑, 교토 전통 거리</span></p>
+
+    <div class="btn-row">
+      <a id="scent-button" class="button" href="https://brand.naver.com/longtake/products/11424974357" target="_blank">🌿 당신만을 위한 향 구경해보세요</a>
+      <button id="copy-url-button" class="button">🔗 테스트 URL 복사</button>
+      <button onclick="location.reload()" class="button">🔄 다시하기</button>
+    </div>
+
+    <div class="share">
+      <p>공유하기:</p>
+      <a href="#"><img src="kakao.png" alt="카카오 공유" /></a>
+      <a href="#"><img src="instagram.png" alt="인스타그램 공유" /></a>
     </div>
   </div>
 
