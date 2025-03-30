@@ -1,75 +1,56 @@
 body {
   margin: 0;
   font-family: 'Gowun Batang', serif;
-  color: #222;
   background-size: cover;
   background-position: center;
+  color: #1f2d1f;
   text-align: center;
-  padding: 2rem;
+  transition: background-image 1s ease-in-out;
+}
+
+.screen {
+  padding: 100px 20px;
 }
 
 .hidden {
   display: none;
 }
 
-h1, h2, h3 {
-  color: #1f2e1f;
-  text-shadow: 1px 1px 2px #eee;
+h1, h2 {
+  margin-bottom: 0.5em;
 }
 
-#start-screen, #question-screen, #result-screen {
-  max-width: 600px;
-  margin: auto;
-  background-color: rgba(255,255,255,0.7);
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-button, .result-button {
-  background-color: #3f5643;
-  color: #fff;
+button, .button {
+  background-color: #3f5a3f;
+  color: white;
   border: none;
-  padding: 1rem 2rem;
-  margin: 1rem;
+  padding: 12px 20px;
+  margin: 15px 8px;
+  border-radius: 8px;
   font-size: 1rem;
-  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-button:hover, .result-button:hover {
-  background-color: #2e4030;
+button:hover, .button:hover {
+  background-color: #2d442d;
   transform: scale(1.05);
 }
 
 .choice-button {
-  display: block;
-  width: 100%;
-  margin: 0.5rem 0;
-  font-size: 1.1rem;
+  display: inline-block;
+  margin: 10px;
 }
 
-#progress {
-  margin-bottom: 1rem;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.notice {
-  margin-top: 2rem;
+.note {
   font-size: 0.9rem;
-  color: #444;
+  color: #555;
+  margin-top: 30px;
 }
 
-.share-icons img {
-  width: 32px;
-  margin: 0.5rem;
-  cursor: pointer;
-  filter: drop-shadow(1px 1px 1px #999);
+.share {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: #2a2a2a;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
