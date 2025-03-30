@@ -2,42 +2,50 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>나의 휴식 취향은?</title>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <link href="https://webfontworld.github.io/Cafe24SsurroundAir/Cafe24SsurroundAir.css" rel="stylesheet">
 </head>
 <body style="background-image: url('1.png');">
 
-  <audio id="bg-music" src="Eternal Garden - Dan Henig.mp3" loop autoplay></audio>
+  <!-- 배경 음악 -->
+  <audio id="bg-music" autoplay loop>
+    <source src="Eternal Garden - Dan Henig.mp3" type="audio/mp3">
+  </audio>
 
-  <div id="start-screen" class="screen">
+  <!-- 시작 화면 -->
+  <div id="start-screen" class="overlay">
     <h1>나의 휴식 취향은?</h1>
     <p>당신에게 어울리는 향은 어떤 걸까요?</p>
     <button id="start-btn">시작하기</button>
-    <p class="note">현재까지 7,854명이 참여했어요</p>
-    <p class="note">🌿 테스트 중 은은한 배경 음악이 재생됩니다. 소리를 켜주세요!</p>
+    <p>현재까지 7,854명이 참여했어요</p>
+    <p style="font-size: 0.9rem; color: #333;">🎵 테스트 중 음악이 재생됩니다. 소리를 켜주세요!</p>
   </div>
 
-  <div id="question-screen" class="screen hidden">
-    <h2 id="question-text">질문 텍스트</h2>
+  <!-- 질문 화면 -->
+  <div id="question-screen" class="overlay hidden">
+    <h2 id="question-text"></h2>
     <div id="choices"></div>
-    <p id="progress">1 / 10</p>
+    <p id="progress"></p>
   </div>
 
-  <div id="result-screen" class="screen hidden">
-    <h2 id="result-quote">결과 문장</h2>
-    <h1 id="result-title">향 이름</h1>
-    <p id="result-description">설명 문장</p>
-    <p id="extra-info"></p>
-    <a id="scent-button" class="button" href="#" target="_blank">🌿 당신만을 위한 향 구경해보세요</a>
+  <!-- 결과 화면 -->
+  <div id="result-screen" class="overlay hidden">
+    <p id="result-quote"></p>
+    <h2 id="result-title"></h2>
+    <p id="result-description"></p>
+    
+    <p><strong>🎧 휴식과 어울리는 음악:</strong> 잔잔한 피아노 선율, 카페 음악</p>
+    <p><strong>✈️ 어울리는 여행지:</strong> 남해 바다, 숲속 글램핑, 교토 전통 거리</p>
+
+    <button id="scent-button" target="_blank">🌿 당신만을 위한 향 구경해보세요</button>
     <button id="copy-url-button">🔗 테스트 URL 복사</button>
-    <div class="share">
-      <p>
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111457.png" class="icon" />
-        카카오 공유 &nbsp;&nbsp;
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111421.png" class="icon" />
-        인스타그램 공유
-      </p>
+
+    <div class="social-icons">
+      <p>공유하기:</p>
+      <img src="kakao_icon.png" alt="카카오 공유">
+      <img src="insta_icon.png" alt="인스타그램 공유">
     </div>
   </div>
 
