@@ -2,51 +2,47 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>나의 휴식 취향은?</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bg-music" src="assets/audio/bg-music.mp3" autoplay loop></audio>
-  <div id="app">
-    <section id="start-screen" class="screen active">
-      <h1>나의 휴식 취향은?</h1>
-      <p class="subtitle">당신에게 어울리는 향은 어떤 걸까요?</p>
-      <button id="start-btn">시작하기</button>
-      <p class="participants">현재까지 <span id="count">7,854</span>명이 참여했어요</p>
-    </section>
-
-    <section id="question-screen" class="screen hidden">
-      <div id="question-box">
-        <p id="question-text"></p>
-        <div id="choices"></div>
-      </div>
-    </section>
-
-    <section id="result-screen" class="screen hidden">
-      <blockquote id="result-quote"></blockquote>
-      <h2 id="result-title"></h2>
-      <p id="result-desc-1"></p>
-      <p id="result-desc-2"></p>
-      <p id="result-desc-3"></p>
-      <p id="result-desc-4"></p>
-      <img id="result-img" src="assets/images/3.png" alt="향 이미지" />
-      <a id="result-link" href="#" target="_blank" class="result-button">🌿 이 향기 구경하러 가기</a>
-      <div class="share-group">
-        <button id="copy-url">🔗 테스트 URL 복사</button>
-      </div>
-      <div class="stats">
-        <p>다른 사람들은?</p>
-        <ul>
-          <li>🪵 샌달우드: 41%</li>
-          <li>☕ 블랙티앤피그: 34%</li>
-          <li>🌿 바질앤베티버: 25%</li>
-        </ul>
-      </div>
-      <button id="retry-btn">🔁 다시하기</button>
-    </section>
+  <div id="start-screen" class="active">
+    <h1>나의 휴식 취향은?</h1>
+    <p>당신에게 어울리는 향은 어떤 걸까요?</p>
+    <button id="start-btn">시작하기</button>
+    <p>현재까지 7,854명이 참여했어요</p>
+    <div id="music-notice">🌿 테스트 중 음악이 재생됩니다. 소리를 켜주세요 :)</div>
   </div>
+
+  <div id="question-screen" class="hidden">
+    <div id="question-text"></div>
+    <div id="progress"></div>
+    <div id="choices"></div>
+  </div>
+
+  <div id="result-screen" class="hidden">
+    <p id="result-quote"></p>
+    <h2 id="result-title"></h2>
+    <p id="result-description"></p>
+
+    <a id="scent-button" class="choice-button" href="#" target="_blank">당신만을 위한 향 구경해보세요</a>
+    <br />
+    <button id="copy-url-button">🔗 테스트 URL 복사</button>
+
+    <div id="social-share">
+      <button>🟡 카카오 공유</button>
+      <button>📸 인스타그램 스토리</button>
+    </div>
+
+    <div id="summary">
+      <h4>다른 사람들은?</h4>
+      <p>☕ 샌달우드: 41%</p>
+      <p>🍇 블랙티앤피그: 34%</p>
+      <p>🌿 바질앤베티버: 25%</p>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
