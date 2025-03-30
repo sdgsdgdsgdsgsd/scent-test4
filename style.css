@@ -1,22 +1,23 @@
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Gowun Batang', serif;
+  font-family: 'Nanum Myeongjo', serif;
+  background-image: url('1.png');
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   color: #222;
 }
 
 .screen {
-  width: 100vw;
-  height: 100vh;
-  padding: 20px;
-}
-
-.center {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.visible {
+  display: flex;
 }
 
 .hidden {
@@ -24,76 +25,83 @@ body {
 }
 
 .content-box {
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 40px;
   border-radius: 20px;
-  text-align: center;
+  width: 80%;
   max-width: 600px;
-  width: 90%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-h1, h2 {
-  margin-bottom: 16px;
-  font-size: 2rem;
-  color: #1f342a;
-}
-
-p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-
-button, a {
-  margin: 10px;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-  background-color: #2f4f3e;
+button, .result-button {
+  background-color: #354F45;
   color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin: 10px;
   cursor: pointer;
-  transition: 0.3s;
-  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
-button:hover, a:hover {
-  background-color: #3f6d58;
+button:hover, .result-button:hover {
+  background-color: #456F65;
 }
 
-#choices {
+.choices {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  align-items: center;
+  margin: 20px 0;
 }
 
 .choice-button {
-  background-color: rgba(47, 79, 62, 0.8);
+  margin: 10px 0;
+  width: 80%;
 }
 
-.music-alert {
-  margin-top: 10px;
-  font-size: 0.9rem;
-  color: #2f4f3e;
+.progress {
+  margin-top: 20px;
+  font-weight: bold;
 }
 
 .quote {
   font-style: italic;
-  margin-bottom: 20px;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.description {
+  margin: 15px 0;
+  line-height: 1.6;
+}
+
+.addon {
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 .button-group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 20px;
+  align-items: center;
 }
 
-.share {
-  margin-top: 20px;
+.share-icons {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
 }
 
-.share img {
-  width: 28px;
-  margin: 0 10px;
+.share-label {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.music-guide {
+  font-size: 0.9rem;
+  margin-top: 10px;
+  color: #333;
 }
