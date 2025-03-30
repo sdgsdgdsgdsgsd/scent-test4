@@ -5,66 +5,68 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultScreen = document.getElementById("result-screen");
   const questionText = document.getElementById("question-text");
   const choicesContainer = document.getElementById("choices");
-
-  // 음악 자동 재생
-  const audio = new Audio("Eternal Garden - Dan Henig.mp3");
-  audio.loop = true;
-  audio.volume = 0.5;
-  audio.play().catch(() => {
-    // 사용자 상호작용 후 재생하도록 대기
-    startBtn.addEventListener("click", () => {
-      audio.play();
-    });
-  });
+  const progress = document.getElementById("progress");
+  const musicNotice = document.getElementById("music-notice");
+  const questionIcon = document.getElementById("question-icon");
 
   const questions = [
     {
       text: "당신이 원하는 완벽한 휴일 아침 풍경은?",
+      icon: "☀️",
       options: ["따뜻한 햇살 아래 산책", "맑은 숲속 명상", "창가에서 책 읽기"],
       score: ["sandalwood", "basil", "blacktea"]
     },
     {
       text: "휴식할 때 자주 찾게 되는 공간은?",
+      icon: "🏡",
       options: ["따뜻한 나무 느낌의 공간", "생기 넘치는 정원", "고요한 도서관"],
       score: ["sandalwood", "basil", "blacktea"]
     },
     {
       text: "즐겨 듣는 음악 분위기는?",
+      icon: "🎵",
       options: ["깊은 우디 재즈", "상쾌한 피아노", "로파이 비트"],
       score: ["sandalwood", "basil", "blacktea"]
     },
     {
       text: "좋아하는 음료 느낌은?",
+      icon: "☕",
       options: ["우디향 커피", "민트차", "홍차"],
       score: ["sandalwood", "basil", "blacktea"]
     },
     {
       text: "하루를 마무리하는 나만의 방법은?",
+      icon: "🌙",
       options: ["조명 아래 명상", "상쾌한 샤워", "클래식 음악 듣기"],
       score: ["sandalwood", "basil", "blacktea"]
     },
     {
       text: "힐링이 필요할 때 찾는 자연은?",
+      icon: "🌿",
       options: ["숲길", "허브 정원", "바다 풍경"],
       score: ["sandalwood", "basil", "blacktea"]
     },
     {
       text: "좋아하는 공간의 컬러는?",
+      icon: "🎨",
       options: ["우드 브라운", "그린 톤", "블랙 앤 화이트"],
       score: ["sandalwood", "basil", "blacktea"]
     },
     {
       text: "자주 듣는 칭찬은?",
+      icon: "💬",
       options: ["편안하고 따뜻해", "밝고 생기있어", "차분하고 우아해"],
       score: ["sandalwood", "basil", "blacktea"]
     },
     {
       text: "어울리는 스타일은?",
+      icon: "👕",
       options: ["니트와 블랭킷", "밝은 컬러 라운지웨어", "세련된 실크 옷"],
       score: ["sandalwood", "basil", "blacktea"]
     },
     {
       text: "내 방에서 좋아하는 아이템은?",
+      icon: "🕯️",
       options: ["우디향 캔들", "싱그러운 화분", "차분한 디퓨저"],
       score: ["sandalwood", "basil", "blacktea"]
     }
@@ -111,6 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function showQuestion() {
     const q = questions[current];
     questionText.textContent = q.text;
+    questionIcon.textContent = q.icon;
+    progress.textContent = `${current + 1} / ${questions.length}`;
     choicesContainer.innerHTML = "";
     q.options.forEach((option, i) => {
       const btn = document.createElement("button");
@@ -154,4 +158,14 @@ document.addEventListener("DOMContentLoaded", () => {
     navigator.clipboard.writeText(window.location.href);
     alert("링크가 복사되었어요!");
   };
+
+  const bgm = new Audio("Eternal Garden - Dan Henig.mp3");
+  bgm.loop = true;
+  document.body.addEventListener("click", () => {
+    if (bgm.paused) {
+      bgm.play().catch(e => console.log("자동 재생 차단됨", e));
+    }
+  }, { once: true });
+
+  musicNotice.classList.remove("hidden");
 });
