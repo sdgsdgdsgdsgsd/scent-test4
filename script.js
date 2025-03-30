@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const progress = document.getElementById("progress");
   const musicNotice = document.getElementById("music-notice");
   const questionIcon = document.getElementById("question-icon");
+  const socialShare = document.getElementById("social-share");
 
   const questions = [
     {
@@ -118,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     choicesContainer.innerHTML = "";
     q.options.forEach((option, i) => {
       const btn = document.createElement("button");
+      btn.className = "choice-btn fade-in";
       btn.textContent = option;
       btn.onclick = () => handleAnswer(q.score[i]);
       choicesContainer.appendChild(btn);
@@ -151,12 +153,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("result-desc-4").textContent = data.desc4;
     document.getElementById("result-link").href = data.link;
     document.getElementById("result-quote").textContent = `"${data.desc1}"`;
+    socialShare.classList.remove("hidden");
   }
 
   document.getElementById("retry-btn").onclick = () => location.reload();
   document.getElementById("copy-url").onclick = () => {
     navigator.clipboard.writeText(window.location.href);
     alert("링크가 복사되었어요!");
+  };
+
+  document.getElementById("share-kakao").onclick = () => {
+    alert("카카오 공유 기능은 현재 준비 중입니다.");
+  };
+  document.getElementById("share-insta").onclick = () => {
+    alert("인스타그램은 복사된 링크로 공유해주세요.");
   };
 
   const bgm = new Audio("Eternal Garden - Dan Henig.mp3");
@@ -168,4 +178,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { once: true });
 
   musicNotice.classList.remove("hidden");
+  document.body.style.backgroundImage = "url('1.png')";
 });
