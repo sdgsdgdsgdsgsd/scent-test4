@@ -2,37 +2,37 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>나의 휴식 취향은?</title>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
 </head>
-<body style="background-image: url('1.png')">
-  <audio id="bg-music" src="Eternal Garden - Dan Henig.mp3" autoplay loop></audio>
+<body>
+  <audio id="bg-music" src="Eternal Garden - Dan Henig.mp3" loop autoplay></audio>
 
-  <div id="start-screen">
+  <div id="start-screen" class="screen">
     <h1>나의 휴식 취향은?</h1>
     <p>당신에게 어울리는 향은 어떤 걸까요?</p>
     <button id="start-btn">시작하기</button>
     <p>현재까지 7,854명이 참여했어요</p>
-    <p class="notice">🎧 테스트 중 은은한 배경음악이 재생됩니다. 소리를 줄여주세요 :)</p>
+    <p class="note">🌿 테스트 중 은은한 재생됩니다. 소리를 높여주세요 🌿</p>
   </div>
 
-  <div id="question-screen" class="hidden">
-    <div id="progress"></div>
-    <h2 id="question-text"></h2>
-    <div id="choices" class="choices"></div>
+  <div id="question-screen" class="screen hidden">
+    <p id="question-text"></p>
+    <div id="choices"></div>
+    <p id="progress"></p>
   </div>
 
-  <div id="result-screen" class="hidden">
-    <h3 id="result-quote"></h3>
-    <h1 id="result-title"></h1>
+  <div id="result-screen" class="screen hidden">
+    <p id="result-quote"></p>
+    <h2 id="result-title"></h2>
     <p id="result-description"></p>
-    <a id="scent-button" class="result-button" href="#" target="_blank">🌿 당신만을 위한 향 구경해보세요</a>
-    <button id="copy-url-button">🔗 테스트 URL 복사</button>
-    <div class="share-icons">
-      <img src="kakao.png" alt="카카오 공유" />
-      <img src="insta.png" alt="인스타그램 공유" />
+    <p id="result-extra"></p>
+    <a id="scent-button" class="button primary" href="#" target="_blank">🌿 당신만을 위한 향 구경해보세요</a>
+    <button id="copy-url-button" class="button secondary">🔗 테스트 URL 복사</button>
+    <div class="share">
+      <span>📎 카카오 공유</span> | <span>📸 인스타그램 공유</span>
     </div>
   </div>
 
