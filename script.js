@@ -10,9 +10,13 @@ const resultTitle = document.getElementById('result-title');
 const resultQuote = document.getElementById('result-quote');
 const resultDescription = document.getElementById('result-description');
 const copyUrlButton = document.getElementById('copy-url-button');
-const restartBtn = document.getElementById('restart-btn');
-
+const restartButton = document.getElementById('restart-btn');
+const shareKakao = document.getElementById('share-kakao');
+const shareInsta = document.getElementById('share-insta');
 const bgMusic = document.getElementById('bg-music');
+const loader = document.getElementById('loader');
+const saveImageBtn = document.getElementById('save-image-btn');
+
 bgMusic.volume = 0.4;
 
 const scentScores = {
@@ -107,11 +111,15 @@ const questions = [
 let currentQuestion = 0;
 
 startBtn.addEventListener('click', () => {
-  startScreen.classList.add('hidden');
-  questionScreen.classList.remove('hidden');
-  document.body.style.backgroundImage = "url('2.png')";
-  bgMusic.play();
-  showQuestion();
+  loader.style.display = 'flex';
+  setTimeout(() => {
+    loader.style.display = 'none';
+    startScreen.classList.add('hidden');
+    questionScreen.classList.remove('hidden');
+    document.body.style.backgroundImage = "url('2.png')";
+    showQuestion();
+    bgMusic.play();
+  }, 1000);
 });
 
 function showQuestion() {
@@ -153,8 +161,8 @@ function showResult() {
       '우디한 베이스에 잔잔한 무드를 더한 향을 좋아하는 당신.<br>' +
       '당신은 주변 사람들에게 포근하고 안정감을 주는 사람이에요.<br>' +
       '오늘도 따뜻한 향과 함께 스스로를 감싸주세요.<br><br>' +
-      '🎵 <b>휴식과 어울리는 음악:</b> 잔잔한 피아노 선율, 카페 음악<br>' +
-      '🌍 <b>어울리는 여행지:</b> 남해 바다, 숲속 글램핑, 교토 전통 거리';
+      '🎵 <strong>휴식과 어울리는 음악:</strong> 잔잔한 피아노 선율, 카페 음악<br>' +
+      '🌍 <strong>어울리는 여행지:</strong> 남해 바다, 숲속 글램핑, 교토 전통 거리';
     scentButton.href = 'https://brand.naver.com/longtake/products/11424974357';
   } else if (result === 'basil') {
     resultTitle.textContent = '바질앤베티버';
@@ -163,8 +171,8 @@ function showResult() {
       '허브의 생기와 그린한 노트의 향기를 좋아하는 당신.<br>' +
       '당신은 사람들에게 밝고 생기 있는 에너지를 주는 사람이에요.<br>' +
       '지금, 그린한 숨결로 일상에 리프레시를!<br><br>' +
-      '🎵 <b>휴식과 어울리는 음악:</b> 어쿠스틱 기타, 여름 팝송<br>' +
-      '🌍 <b>어울리는 여행지:</b> 제주 오름, 한적한 유럽 시골, 발리 카페거리';
+      '🎵 <strong>휴식과 어울리는 음악:</strong> 어쿠스틱, 청량한 팝<br>' +
+      '🌍 <strong>어울리는 여행지:</strong> 제주도 숲길, 북유럽 마을, 오사카 공원';
     scentButton.href = 'https://brand.naver.com/longtake/products/11424974357';
   } else {
     resultTitle.textContent = '블랙티앤피그';
@@ -173,8 +181,8 @@ function showResult() {
       '부드럽고 고급스러운 블렌딩 향을 선호하는 당신.<br>' +
       '묵직하면서도 우아한 매력을 지닌 당신에게 어울려요.<br>' +
       '고요한 저녁, 블랙티처럼 깊이 있는 순간을 선물하세요.<br><br>' +
-      '🎵 <b>휴식과 어울리는 음악:</b> 클래식, 재즈 피아노, lo-fi 힙합<br>' +
-      '🌍 <b>어울리는 여행지:</b> 프라하 골목, 도쿄 북카페, 런던의 공원 벤치';
+      '🎵 <strong>휴식과 어울리는 음악:</strong> 클래식, 재즈 피아노, lo-fi 힙합<br>' +
+      '🌍 <strong>어울리는 여행지:</strong> 프라하 골목, 도쿄 북카페, 런던의 공원 벤치';
     scentButton.href = 'https://brand.naver.com/longtake/products/11424974357';
   }
 }
@@ -184,6 +192,23 @@ copyUrlButton.addEventListener('click', () => {
   alert('🔗 링크가 복사되었어요!');
 });
 
-restartBtn.addEventListener('click', () => {
-  window.location.reload();
+restartButton.addEventListener('click', () => {
+  location.reload();
+});
+
+shareKakao.addEventListener('click', () => {
+  alert('카카오톡 공유는 현재 준비 중이에요!');
+});
+
+shareInsta.addEventListener('click', () => {
+  alert('인스타그램은 링크 공유만 가능해요!');
+});
+
+saveImageBtn.addEventListener('click', () => {
+  html2canvas(document.querySelector('#result-screen')).then(canvas => {
+    const link = document.createElement('a');
+    link.download = '향테스트_결과.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  });
 });
