@@ -1,60 +1,47 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>나의 휴식 취향은?</title>
-  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div id="loader">잠시만 기다려주세요...</div>
+  <div class="container" id="start-screen">
+    <h1>나의 휴식 취향은?</h1>
+    <p>당신에게 어울리는 향은 어떤 걸까요?</p>
+    <button id="start-btn">시작하기</button>
+    <p>현재까지 7,854명이 참여했어요</p>
+    <p>🎵 테스트 중 음악이 재생됩니다. 소리를 켜주세요!</p>
+  </div>
 
-  <!-- 시작 화면 -->
-  <div class="screen" id="start-screen">
-    <div class="card">
-      <h1>나의 휴식 취향은?</h1>
-      <p>당신에게 어울리는 향은 어떤 걸까요?</p>
-      <button class="main-btn" id="start-btn">시작하기</button>
-      <p>현재까지 <strong>7,854명</strong>이 참여했어요</p>
-      <p class="music-alert">🎵 테스트 중 음악이 재생됩니다. 소리를 켜주세요!</p>
+  <div class="container hidden" id="question-screen">
+    <p id="question-text"></p>
+    <div id="choices"></div>
+    <p id="progress"></p>
+  </div>
+
+  <div class="container hidden" id="result-screen">
+    <p id="result-quote"></p>
+    <h2 id="result-title"></h2>
+    <p id="result-description"></p>
+
+    <div class="result-buttons">
+      <a id="scent-button" href="#" target="_blank">
+        <button>🌿 당신만을 위한 향 구경해보세요</button>
+      </a>
+      <button id="copy-url-button">🔗 테스트 URL 복사</button>
+      <button id="restart-btn">🔄 다시하기</button>
+    </div>
+
+    <div id="share-buttons">
+      <img id="share-kakao" src="https://cdn-icons-png.flaticon.com/512/2111/2111614.png" alt="카카오톡 공유">
+      <img id="share-insta" src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png" alt="인스타그램 공유">
     </div>
   </div>
 
-  <!-- 질문 화면 -->
-  <div class="screen hidden" id="question-screen">
-    <div class="card">
-      <div class="question-text" id="question-text">질문</div>
-      <div class="choices" id="choices"></div>
-      <div class="progress" id="progress">1 / 10</div>
-    </div>
-  </div>
-
-  <!-- 결과 화면 -->
-  <div class="screen hidden" id="result-screen">
-    <div class="card">
-      <p id="result-quote" style="font-style: italic;">"</p>
-      <h2 id="result-title">샌달우드</h2>
-      <div class="result-text" id="result-description"></div>
-
-      <a id="scent-button" class="main-btn" href="#" target="_blank">🌿 당신만을 위한 향 구경해보세요</a><br/>
-      <button class="sub-btn" id="copy-url-button">🔗 테스트 URL 복사</button>
-      <button class="sub-btn" id="restart-btn">🔄 다시하기</button>
-
-      <div class="share-section">
-        <p>공유하기:</p>
-        <div class="share-icons">
-          <img src="kakao_icon.png" alt="카카오 공유" style="width:30px; height:30px;" />
-          <img src="instagram_icon.png" alt="인스타그램 공유" style="width:30px; height:30px;" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 음악 -->
   <audio id="bg-music" src="Eternal Garden - Dan Henig.mp3" loop></audio>
-
-  <!-- 스크립트 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
